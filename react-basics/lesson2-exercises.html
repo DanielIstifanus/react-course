@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lesson 2 Exercises</title>
+  </head>
+
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+      //2a Create a simple React component that displays a greeting message.
+      /* function App() {
+        return <p>Hello, Welcome to my website.</p>;
+      }*/
+
+      //2b. Continue and add login and sign up using fragment to the App component.
+      /*function App() {
+        return (
+          <>
+            <p>Hello, Welcome to my website.</p>
+            <button>Login</button>
+            <button>Sign Up</button>
+          </>
+        );
+      }*/
+
+      //2c. Contin the App component add 2 text boxes for email and passsword.
+      /*function App() {
+        return (
+          <>
+            <p>Hello, Welcome to my website.</p>
+            <div>
+              <input type="text" placeholder="Email" />
+            </div>
+            <div>
+              <input type="password" placeholder="Password" />
+            </div>
+            <button>Login</button>
+            <button>Sign Up</button>
+          </>
+        );
+      }*/
+
+      //2d. Create a component called LoginForm and move the input fields and buttons into it. The call LoginForm component from the App component.
+      /*function LoginForm() {
+        return (
+          <>
+            <p>Hello, Welcome to my website.</p>
+            <div>
+              <input type="text" placeholder="Email" />
+            </div>
+            <div>
+              <input type="password" placeholder="Password" />
+            </div>
+            <button>Login</button>
+            <button>Sign Up</button>
+          </>
+        );
+      }
+
+      function App() {
+        return <LoginForm />;
+      }*/
+
+      //2e. Create e-commerce product App cottong socks price $10.90 and a Add to Cart Button in App component.
+      function ProductDetails({ productName, price, discountPrice }) {
+        return (
+          <>
+            <p>{productName}</p>
+            {discountPrice ? (
+              <del>
+                <p>Price: ${price}</p>
+              </del>
+            ) : (
+              <p>Price: ${price}</p>
+            )}
+            {discountPrice && <p>Discount Price: ${discountPrice}</p>}
+            <button>Add to Cart</button>
+          </>
+        );
+      }
+
+      //2f. Add 2 more products to the App component.
+      var ballPrice = 6.0;
+      var tShirtPrice = 7.99;
+      var socksPrice = 10.9;
+      ballPrice = ballPrice.toFixed(2);
+      tShirtPrice = tShirtPrice.toFixed(2);
+      socksPrice = socksPrice.toFixed(2);
+      var socksDiscountPrice = (5.45).toFixed(2); // 50% discount on socks
+
+      /*function App() {
+        return (
+          <>
+            <ProductDetails productName="Cotton Socks" price={socksPrice} />
+            <ProductDetails productName="Plain T-Shirt" price={tShirtPrice} />
+            <ProductDetails productName="Tennis Ball" price={ballPrice} />
+          </>
+        );
+      }*/
+
+      //2g. Add a discout for socks and if it exist display it in the product details component.
+      /*function App() {
+        return (
+          <>
+            <ProductDetails
+              productName="Cotton Socks"
+              price={socksPrice}
+              discountPrice={socksDiscountPrice}
+            />
+            <ProductDetails productName="Plain T-Shirt" price={tShirtPrice} />
+            <ProductDetails productName="Tennis Ball" price={ballPrice} />
+          </>
+        );
+      }*/
+
+      //2h. If discount exist cross out original price using <del> tag.
+      function App() {
+        return (
+          <>
+            <ProductDetails
+              productName="Cotton Socks"
+              price={socksPrice}
+              discountPrice={socksDiscountPrice}
+            />
+            <ProductDetails productName="Plain T-Shirt" price={tShirtPrice} />
+            <ProductDetails productName="Tennis Ball" price={ballPrice} />
+          </>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

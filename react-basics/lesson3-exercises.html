@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lesson 3 Exercises</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      //3a Create a simple React component that displays a button with the text "Click 0 times".
+      /*function click() {
+        console.log("Clicked");
+      }
+      function App() {
+        return <button onClick={click}>Click 0 times</button>;
+      }*/
+
+      /*3b. use React.useState to save a count. Count should have an initial value 0 and react.useState
+      should return count and setCount. Let the console display */
+
+      /*function App() {
+        const [count, setCount] = React.useState(0);
+
+        function click() {
+          setCount(count + 1);
+          console.log(`Clicked ${count} times`);
+        }
+        return <button onClick={click}>Click {count} times</button>;
+      }*/
+
+      //3c. From 3b if click is 1 then the button should display "Clicked 1 time" and if click is more than 1 then it should display "Clicked X times" where X is the number of clicks.
+      /*function App() {
+        const [count, setCount] = React.useState(0);
+        const [times, setTimes] = React.useState("times");
+
+        function click() {
+          setCount(count + 1);
+          {
+            count === 0 ? setTimes("time") : setTimes("times");
+          }
+        }
+        return (
+          <button onClick={click}>
+            Clicked {count} {times}
+          </button>
+        );
+      }*/
+
+      //3d. Seperate the counter function and have two button components. So that each component have two different counters displayed
+      /*function Click() {
+        const [count, setCount] = React.useState(0);
+        function Counter() {
+          setCount(count + 1);
+          console.log(`Clicked ${count} times`);
+        }
+        return (
+          <button onClick={Counter}>
+            Clicked {count} {count == 1 ? "time" : "times"}
+          </button>
+        );
+      }
+
+      function App() {
+        return (
+          <>
+            <Click />
+            <Click />
+          </>
+        );
+      }*/
+
+      //3e. Make both buttons share the same state and display the same count.
+      //3f. Add a reset button that resets the count to 0.
+
+      /*function Click({ count, setCount }) {
+        function Counter() {
+          setCount(count + 1);
+        }
+        return (
+          <button onClick={Counter}>
+            Clicked {count} {count === 1 ? "time" : "times"}
+          </button>
+        );
+      }
+
+      function Reset({ count, setCount }) {
+        function resetCounter() {
+          setCount(0);
+        }
+        return <button onClick={resetCounter}>Reset</button>;
+      }
+
+      function App() {
+        const [count, setCount] = React.useState(0);
+        return (
+          <>
+            <Click count={count} setCount={setCount} />
+            <Click count={count} setCount={setCount} />
+            <Reset count={count} setCount={setCount} />
+          </>
+        );
+      }*/
+
+      //3g. Create a text input field, once the user enters a text, it displays it in a paragraph below the input field.
+      /*function InputText({ text, setText }) {
+        function updateText(event) {
+          setText(event.target.value);
+        }
+        return (
+          <input
+            type="text"
+            onChange={updateText}
+            placeholder="Type Text Here."
+          />
+        );
+      }
+      function DisplayText({ text, setText }) {
+        return <p>{text}</p>;
+      }
+      function App() {
+        const [text, setText] = React.useState("");
+        return (
+          <>
+            <InputText text={text} setText={setText} />
+            <DisplayText text={text} />
+          </>
+        );
+      }*/
+
+      //3h. Contine from 3g add a reset button and an example button that set's the text to Daniel.
+      /*function InputText({ text, setText }) {
+        function updateText(event) {
+          setText(event.target.value);
+        }
+        return (
+          <input
+            type="text"
+            onChange={updateText}
+            value={text}
+            placeholder="Type Text Here."
+          />
+        );
+      }
+
+      function ResetButton({ text, setText }) {
+        function ClearField() {
+          setText("");
+        }
+        return <button onClick={ClearField}>Reset</button>;
+      }
+
+      function ExampleButton({ text, setText }) {
+        function ShowExample() {
+          setText("Daniel");
+        }
+        return <button onClick={ShowExample}>Example</button>;
+      }
+
+      function DisplayText({ text }) {
+        return (
+          <>
+            <p>{text}</p>
+          </>
+        );
+      }
+
+      function App() {
+        const [text, setText] = React.useState("");
+        return (
+          <>
+            <InputText text={text} setText={setText} />
+            <ResetButton text={text} setText={setText} />
+            <ExampleButton text={text} setText={setText} />
+            <DisplayText text={text} />
+          </>
+        );
+      }*/
+
+      //3i. Create a input text field that displays the text in a paragraph below it after pressing enter
+      /*function InputText({ text, setText, setSentMessage }) {
+        function EnterKey(event) {
+          if (event.key === "Enter") {
+            setSentMessage(text);
+            setText("");
+          }
+        }
+        function UpdateInput(event) {
+          setText(event.target.value);
+        }
+
+        return (
+          <>
+            <input
+              type="text"
+              onChange={UpdateInput}
+              onKeyDown={EnterKey}
+              value={text}
+              placeholder="Send a message to Chatbot"
+            />
+          </>
+        );
+      }
+
+      function SendButton({ text, setText, setSentMessage }) {
+        function SendMessage() {
+          setSentMessage(text);
+          setText("");
+        }
+        return (
+          <>
+            <button onClick={SendMessage}>Send</button>
+          </>
+        );
+      }
+
+      function DisplayText({ text }) {
+        return (
+          <>
+            <p>{text}</p>
+          </>
+        );
+      }
+
+      function App() {
+        const [text, setText] = React.useState("");
+        const [sentMessage, setSentMessage] = React.useState("");
+
+        return (
+          <>
+            <InputText
+              text={text}
+              setText={setText}
+              setSentMessage={setSentMessage}
+            />
+            <SendButton
+              text={text}
+              setText={setText}
+              setSentMessage={setSentMessage}
+            />
+            <DisplayText text={sentMessage} />
+          </>
+        );
+      }*/
+
+      //3j. continue from 3i, once you press ESC, the input field should be cleared and the text should not be displayed in the paragraph.
+
+      function InputText({ text, setText, setSentMessage }) {
+        function EnterKey(event) {
+          if (event.key === "Enter") {
+            setSentMessage(text);
+            setText("");
+          }
+
+          if (event.key === "Escape") {
+            setText("");
+            setSentMessage("");
+          }
+        }
+        function UpdateInput(event) {
+          setText(event.target.value);
+        }
+
+        return (
+          <input
+            type="text"
+            onChange={UpdateInput}
+            onKeyDown={EnterKey}
+            value={text}
+            placeholder="Send a message to Chatbot"
+          />
+        );
+      }
+
+      function SendButton({ text, setText, setSentMessage }) {
+        function SendMessage() {
+          setSentMessage(text);
+          setText("");
+        }
+        return <button onClick={SendMessage}>Send</button>;
+      }
+
+      function DisplayText({ sentMessage }) {
+        return <p>{sentMessage}</p>;
+      }
+
+      function App() {
+        const [text, setText] = React.useState("");
+        const [sentMessage, setSentMessage] = React.useState("");
+        return (
+          <>
+            <InputText
+              text={text}
+              setText={setText}
+              setSentMessage={setSentMessage}
+            />
+            <SendButton
+              text={text}
+              setText={setText}
+              setSentMessage={setSentMessage}
+            />
+            <DisplayText sentMessage={sentMessage} />
+          </>
+        );
+      }
+
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

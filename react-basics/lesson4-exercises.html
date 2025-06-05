@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lesson 4 Exercises</title>
+    <style>
+      .on-button {
+        background-color: rgb(25, 135, 84);
+        color: white;
+        border-radius: 5px;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .off-button {
+        background-color: rgb(220, 53, 69);
+        color: white;
+        border-radius: 5px;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+      }
+
+      .form-input {
+        padding: 8px;
+        margin-bottom: 10px;
+        width: 300px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+      }
+
+      .hello-message {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+
+      .login-button {
+        background-color: rgb(25, 135, 84);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 5px;
+      }
+      .signup-button {
+        background-color: rgb(108, 117, 125);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .hide-password {
+        background-color: rgb(220, 53, 69);
+        color: white;
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 3px;
+      }
+      .app-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      body {
+        background-color: rgb(222, 222, 222);
+        margin: 0;
+      }
+
+      .app-container-button {
+        background-color: rgb(25, 135, 84);
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+
+    <script type="text/babel">
+      // Your React code goes here
+
+      /*function OnButton({
+        isButtonOn,
+        setIsButtonOn,
+        stateValue,
+        setStateValue,
+      }) {
+        function OnSwitch() {
+          setIsButtonOn(!isButtonOn);
+          if (isButtonOn) {
+            setStateValue("OFF");
+          } else {
+            setStateValue("ON");
+          }
+        }
+        return (
+          <button
+            onClick={OnSwitch}
+            className={isButtonOn ? "on-button" : "off-button"}
+            value={stateValue}
+          >
+            {stateValue}
+          </button>
+        );
+      }
+
+      //4a. Create a on button
+      //4b. make the button toggle between "ON" and "OFF" when clicked
+      //4c. Change the button's background color to green when "ON" and red when "OFF"
+      function App() {
+        const [isButtonOn, setIsButtonOn] = React.useState(false);
+        const [stateValue, setStateValue] = React.useState("OFF");
+        return (
+          <>
+            <OnButton
+              isButtonOn={isButtonOn}
+              setIsButtonOn={setIsButtonOn}
+              stateValue={stateValue}
+              setStateValue={setStateValue}
+            />
+          </>
+        );
+      }*/
+
+      // 4d. Create a simple login form with email and password inputs, a login button, and a sign-up button.
+      //4e. Add a show/hide password button that toggles the visibility of the password input.
+
+      /* function HelloMessage() {
+        return (
+          <div className="hello-message">Hello, welcome to my website!</div>
+        );
+      }
+      function EmailInput() {
+        return (
+          <input
+            className="form-input"
+            type="email"
+            placeholder="Enter your email"
+          />
+        );
+      }
+
+      function PasswordInput() {
+        const [isPasswordVisible, setIsPasswordVisible] = React.useState(false);
+        const [passwordStatus, setPasswordStatus] = React.useState("Hide");
+
+        function TogglePassword() {
+          setIsPasswordVisible(!isPasswordVisible);
+          if (isPasswordVisible) {
+            setPasswordStatus("Show");
+          } else {
+            setPasswordStatus("Hide");
+          }
+        }
+        return (
+          <div>
+            <input
+              className="form-input"
+              type={isPasswordVisible ? "text" : "password"}
+              placeholder="Enter your password"
+            />
+            <button
+              className="hide-password"
+              onClick={TogglePassword}
+              value={passwordStatus}
+            >
+              {passwordStatus}
+            </button>
+          </div>
+        );
+      }
+
+      function LoginButton() {
+        return <button className="login-button">Login</button>;
+      }
+
+      function SignUpButton() {
+        return <button className="signup-button">Sign Up</button>;
+      }
+
+      function App() {
+        const [email, setEmail] = React.useState("");
+        const [password, setPassword] = React.useState("");
+        return (
+          <>
+            <HelloMessage />
+            <EmailInput />
+            <PasswordInput />
+            <LoginButton />
+            <SignUpButton />
+          </>
+        );
+      }*/
+
+      //4f. Use the dayjs librabry to display the current date and time in the format "YYYY-MM-DD HH:mm:ss". use use effect to update the time every 1000 milliseconds.
+      //4g. Use useEffect to update the time every second.
+
+      /*function CurrentDateTime() {
+        const [currentTime, setCurrentTime] = React.useState(
+          dayjs().format("HH:mm:ss")
+        );
+
+        React.useEffect(() => {
+          setInterval(() => {
+            setCurrentTime(dayjs().format("HH:mm:ss"));
+          }, 1000);
+
+          // Important: make sure to give React.useEffect()
+          // a dependency array of [] so it only runs once!
+        }, []);
+        return <>Current Time: {currentTime}</>;
+      }
+      function App() {
+        return (
+          <>
+            <h1>Current Date and Time</h1>
+            <CurrentDateTime />
+          </>
+        );
+      }*/
+
+      //4h. Create 3 button components: Clicker, Reset, and AutoClicker.
+
+      function App() {
+        const [count, setCount] = React.useState(0);
+        const buttonRef = React.useRef();
+
+        function increaseCount() {
+          setCount(count + 1);
+        }
+
+        function resetCount() {
+          setCount(0);
+        }
+
+        function autoClick() {
+          setInterval(() => {
+            const buttonElem = buttonRef.current;
+            if (buttonElem) {
+              buttonElem.click();
+            }
+          }, 1000);
+        }
+
+        return (
+          <div className="app-container">
+            <button
+              className="app-container-button"
+              onClick={increaseCount}
+              ref={buttonRef}
+            >
+              Clicked {count} {count === 1 ? "time" : "times"}
+            </button>
+            <button className="app-container-button" onClick={resetCount}>
+              Reset
+            </button>
+            <button className="app-container-button" onClick={autoClick}>
+              Auto Click
+            </button>
+          </div>
+        );
+      }
+      const container = document.querySelector(".js-container");
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>
